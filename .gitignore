@@ -4,7 +4,7 @@ db.sqlite3
 static/
 
 .idea/
-
+*.vscode/
 
 
 # Byte-compiled / optimized / DLL files
@@ -98,3 +98,4 @@ ENV/
 # Rope project settings
 .ropeproject
 
+将删除 webapp/frontend/
