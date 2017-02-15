@@ -7,6 +7,12 @@ static/
 *.vscode/
 
 
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
