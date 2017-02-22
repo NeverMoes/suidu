@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="tableData" border style="width: 100%" @row-click="openUrl">
+    <el-table :data="tableData" highlight-current-row border style="width: 100%" @row-click="handRowClick">
         <el-table-column prop="desc" label="标题"></el-table-column>
         <el-table-column prop="publishedAt" label="时间"></el-table-column>
         <el-table-column prop="type" label="类型"></el-table-column>
@@ -14,10 +14,13 @@ export default {
   data () {
     return {
         tableData: []
+        // rowStyle: {
+
+        // }
     }
   },
   methods: {
-    openUrl(row, event, column) {
+    handRowClick(row, event, column) {
         window.open(row.url)
     }
   },

@@ -5,18 +5,27 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Item, Field
+from scrapy.contrib.loader import ItemLoader
 
 
-class DoubanBookItem(scrapy.Item):
-    link = scrapy.Field()
-    title = scrapy.Field()
-    rating = scrapy.Field()
-    rating_people = scrapy.Field()
-    # tags = scrapy.Field()
+class DoubanBookItem(Item):
+    url = Field()
+    title = Field()
+    rating = Field()
+    rating_people = Field()
+    # tags = Field()
 
 
-class WebspiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class GithubTrendingItem(Item):
+    url = Field()
+    repo = Field()
+    desc = Field()
+    type = Field()
+    stars = Field()
+    todat_stars = Field()
+    owner = Field()
+    fork = Field()
+
+
+

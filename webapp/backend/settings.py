@@ -68,10 +68,7 @@ TEMPLATES = [
 ]
 
 
-# Add for vuejs
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/dist/static'),
-]
+
 
 
 
@@ -127,3 +124,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
+# Add for vuejs
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "frontend/dist/static"),
+]

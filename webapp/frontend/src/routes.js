@@ -2,6 +2,8 @@ import NotFound from './pages/404.vue'
 import Home from './pages/Home.vue'
 import Hello from './pages/Hello.vue'
 import Gank from './pages/Gank.vue'
+import Daily from './pages/Daily'
+import About from './pages/About'
 
 let routes = [
     {
@@ -14,7 +16,9 @@ let routes = [
         name: 'Home',
         children: [
             { path: '/hello', component: Hello, name: 'Hello' },
-            { path: '/gank', component: Gank, name: 'Gank' }
+            { path: '/gank', component: Gank, name: 'Gank' },
+            { path: '/daily', component: Daily, name: 'Daily'},
+            { path: '/about', component: About, name: 'About'}
         ]
     },
     {

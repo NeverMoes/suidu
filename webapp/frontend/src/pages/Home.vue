@@ -3,9 +3,9 @@
 		<el-col :span="24" class="main">
 			<aside>
         <el-menu default-active="$route.path" theme="dark" @select="handleselect" unique-opened router>
-          <el-menu-item index="/home"><i class="el-icon-menu"></i>主页</el-menu-item>
-          <el-menu-item index="/gank"><i class="el-icon-message"></i>干货</el-menu-item>
-          <el-menu-item index=""><i class="el-icon-setting"></i>暂无</el-menu-item>
+          <el-menu-item index="/hello"><i class="el-icon-menu"></i>主页</el-menu-item>
+          <el-menu-item index="/gank"><i class="el-icon-message"></i>技术干货</el-menu-item>
+          <el-menu-item index="/about"><i class="el-icon-setting"></i>关于</el-menu-item>
         </el-menu>
 			</aside>
 			<section class="content">
