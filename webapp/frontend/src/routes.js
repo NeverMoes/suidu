@@ -2,8 +2,10 @@ import NotFound from './pages/404.vue'
 import Home from './pages/Home.vue'
 import Hello from './pages/Hello.vue'
 import Gank from './pages/Gank.vue'
-import Daily from './pages/Daily'
-import About from './pages/About'
+import Github from './pages/Github.vue'
+import HackerNews from './pages/HackerNews.vue'
+// import Daily from './pages/Daily.vue'
+import About from './pages/About.vue'
 
 let routes = [
     {
@@ -17,7 +19,9 @@ let routes = [
         children: [
             { path: '/hello', component: Hello, name: 'Hello' },
             { path: '/gank', component: Gank, name: 'Gank' },
-            { path: '/daily', component: Daily, name: 'Daily'},
+            // { path: '/daily', component: Daily, name: 'Daily'},
+            { path: '/github', component: Github, name: 'Github'},
+            { path: '/hackernews', component: HackerNews, name: 'HackerNews'},
             { path: '/about', component: About, name: 'About'}
         ]
     },

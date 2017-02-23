@@ -28,4 +28,11 @@ class GithubTrendingItem(Item):
     forks = Field()
 
 
+class HackerNewsItem(Item):
+    url = Field()
+    id = Field()
+    title = Field()
+    time = Field()
+    score = Field()
+
 

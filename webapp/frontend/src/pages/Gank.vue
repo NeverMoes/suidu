@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {getGank} from '../api'
+
 export default {
   name: 'Gank',
   data () {
@@ -25,7 +27,7 @@ export default {
     }
   },
   mounted: function() {
-    axios.get('http://gank.io/api/random/data/all/20')
+    getGank()
       .then(response => this.tableData = response.data.results)
       .catch(error => console.log(error));
   }
