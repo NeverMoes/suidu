@@ -2,9 +2,9 @@
 ## 前端
 vue + vuex + vue-router + axios + elementUI
 ## 后端
-django + RESTful API
+django + RESTful API + mongodb
 ## 爬虫
-scrapy
+scrapy + mongodb
 ## 运维
-docker + ngixn + uwsgi
+docker + nginx + uwsgi
 ## docker 镜像地址
