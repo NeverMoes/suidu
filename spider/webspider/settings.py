@@ -9,6 +9,7 @@ DEFAULT_REQUEST_HEADERS = {
 
 
 ITEM_PIPELINES = {
+    'webspider.pipelines.MongodbPipeline': 1,
 }
 
 

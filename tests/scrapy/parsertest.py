@@ -1,6 +1,6 @@
 import scrapy
 import requests
-from scrapy.contrib.loader import ItemLoader
+
 
 url = 'https://github.com/trending?since=daily'
 
@@ -8,7 +8,6 @@ url_prefix = 'https://github.com'
 
 req = requests.get(url)
 
-response = scrapy.http.HtmlResponse()
 
 sel = scrapy.selector.Selector(text=req.text)
 
@@ -22,10 +21,9 @@ for s in sel.css('div.explore-content > ol > li'):
     forks = divs[3].css('a[aria-label="Forks"]::text').extract()[1].strip()
     today = divs[3].css('span.float-right::text').extract()[1].strip()
 
-    type = divs[3].css('span[itemprop="programmingLanguage"]::text').extract_first().strip()
+    type = divs[3].css('span[itemprop="programmingLanguage"]::text').extract_first()
 
-    if not type:
-        type = 'None'
+    type = type.strip() if type else None
 
     print(owner)
     print(repo)

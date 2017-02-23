@@ -1,4 +1,4 @@
-import pymango
+import pymongo
 
 
 class DoubanBookPipeline(object):
@@ -6,37 +6,26 @@ class DoubanBookPipeline(object):
 
 
 class MongodbPipeline(object):
-    collection_name = 'douban_cartoon' # mongo的collection相当于sql的table
 
-    def __init__(self, mongo_uri,mongo_db):
-        self.mongo_uri = mongo_uri
-        self.mongo_db = mongo_db
-
-    ## 配置mongo
     @classmethod
     def from_crawler(cls, crawler):
-        return cls(
-            mongo_uri=crawler.settings.get('MONGO_URI'), #从settings中mongo的uri
-            mongo_db=crawler.settings.get('MONGO_DATABASE','douban') #从settings中获取数据库，默认为douban
-        )
+        pass
 
-    # 在spider工作开始前连接mongodb
     def open_spider(self, spider):
-        self.client = pymongo.MongoClient(self.mongo_uri)
-        self.db = self.client[self.mongo_db]
-    ## 在spider工作结束后关闭连接
+        self.client = pymongo.MongoClient()
+        self.db = self.client.test
+        self.col = self.db.github
+        return
+
     def close_spider(self, spider):
         self.client.close()
-    ## 在mongodb中插入数据
+        return
+
     def process_item(self, item, spider):
-        # for i in item:
-
-        self.db[self.collection_name].insert(dict(item))
-        return item
-
-
+        client = pymongo.MongoClient()
+        db = client.test
+        col = db.github
+        col.insert_one({'name': 'test'})
 
 
-class WebspiderPipeline(object):
-    def process_item(self, item, spider):
-        return item
+

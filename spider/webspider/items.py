@@ -23,9 +23,9 @@ class GithubTrendingItem(Item):
     desc = Field()
     type = Field()
     stars = Field()
-    todat_stars = Field()
+    today_stars = Field()
     owner = Field()
-    fork = Field()
+    forks = Field()
 
 
 

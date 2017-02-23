@@ -21,6 +21,7 @@ from . import view
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^api/github/day$', view.api_github),
     url(r'^api/test$', view.api_test),
 
 ]
