@@ -1,4 +1,9 @@
 # 技术栈说明
+
+**求小伙伴加入**
+
+![](https://github.com/NeverMoes/suidu/blob/master/otherfiles/suidu.png)
+
 ## 前端
 vue + vuex + vue-router + axios + elementUI
 ## 后端
