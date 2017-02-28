@@ -2,7 +2,7 @@
 
 **求小伙伴加入**
 
-![](https://github.com/NeverMoes/suidu/blob/master/otherfiles/suidu.png)
+![](https://github.com/NeverMoes/suidu/blob/master/docs/suidu.png)
 
 ## 前端
 vue + vuex + vue-router + axios + elementUI
