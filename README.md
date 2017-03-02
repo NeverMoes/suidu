@@ -1,6 +1,5 @@
 # 技术栈说明
 
-**求小伙伴加入**
 
 ![](https://github.com/NeverMoes/suidu/blob/master/docs/suidu.png)
 
