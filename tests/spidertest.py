@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
-from spider.webspider.spiders.douban import DoubanSpider
+from crawler.scrapy.spiders.douban import DoubanSpider
 
 # suidu/
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
