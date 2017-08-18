@@ -1,0 +1,55 @@
+mongodb:
+  image: suidu:mongodb
+  container_name: mongodb
+
+
+scrapyd:
+  image: suidu:scrapyd
+  container_name: scrapyd
+  volumes:
+    - ./scrapyd:/scrapyd
+  links:
+    - mongodb
+  expose:
+    - "6800"
+  command: scrapyd
+
+
+django:
+  image: suidu:django
+  container_name: django
+  volumes:
+    - ../src/web/django:/django:ro
+
+  links:
+    - mongodb
+  expose:
+    - "8000"
+  command: gunicorn -c gunicorn_conf.py suidu.wsgi:application
+
+
+scrapy:
+  image: suidu:scrapy
+  container_name: scrapy
+  links:
+    - mongodb
+    - scrapyd
+  command: /bin/bash
+
+
+nginx:
+  image: suidu:nginx
+  container_name: nginx
+  links:
+    - django
+  ports:
+    - "80:80"
+  volumes_from:
+    - django
+#  volumes:
+#    - ./nginx/conf/:/etc/nginx/sites-enabled/
+
+
+
+
+
