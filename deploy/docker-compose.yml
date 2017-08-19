@@ -1,3 +1,13 @@
+vue:
+  image: suidu:vue
+  container_name: vue
+  volumes:
+    - ../src/web/vue:/vue:ro
+  volumes_from:
+    - django
+  command: npm run build
+
+
 mongodb:
   image: suidu:mongodb
   container_name: mongodb
@@ -20,7 +30,7 @@ django:
   container_name: django
   volumes:
     - ../src/web/django:/django:ro
-    - ../src/web/dist/:/dist:ro
+    - ../src/web/dist/:/dist
   links:
     - mongodb
   expose:
@@ -46,16 +56,7 @@ nginx:
     - "80:80"
   volumes_from:
     - django
-#  volumes:
-#    - ./nginx/conf/:/etc/nginx/sites-enabled/
 
-vue:
-  image: suidu:vue
-  container_name: vue
-  volumes:
-    - ../src/web/vue:/vue
-    - ../src/web/dist:/dist
-  command: npm run build
 
 
 
