@@ -20,7 +20,7 @@ django:
   container_name: django
   volumes:
     - ../src/web/django:/django:ro
-
+    - ../src/web/dist/:/dist:ro
   links:
     - mongodb
   expose:
@@ -53,8 +53,10 @@ vue:
   image: suidu:vue
   container_name: vue
   volumes:
-    - ../src/web/vue:vue
+    - ../src/web/vue:/vue
+    - ../src/web/dist:/dist
   command: npm run build
+
 
 
 
