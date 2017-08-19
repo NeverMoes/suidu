@@ -49,7 +49,12 @@ nginx:
 #  volumes:
 #    - ./nginx/conf/:/etc/nginx/sites-enabled/
 
-
+vue:
+  image: suidu:vue
+  container_name: vue
+  volumes:
+    - ../src/web/vue:vue
+  command: npm run build
 
 
 
