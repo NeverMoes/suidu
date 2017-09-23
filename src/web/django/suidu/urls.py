@@ -19,5 +19,7 @@ from . import view
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html")),
-    url(r'^test/', view.test)
+    url(r'^api/hackernews$', view.api_hackernews),
+    url(r'^api/github/day$', view.api_github),
+    url(r'^test$', view.test),
 ]

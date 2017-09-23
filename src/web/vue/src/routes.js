@@ -3,7 +3,7 @@ import Home from './pages/Home.vue'
 import Hello from './pages/Hello.vue'
 import Gank from './pages/Gank.vue'
 //import Github from './pages/Github.vue'
-//import HackerNews from './pages/HackerNews.vue'
+import Hackernews from './pages/Hackernews.vue'
 // import Daily from './pages/Daily.vue'
 // import About from './pages/About.vue'
 
@@ -21,7 +21,7 @@ let routes = [
             { path: '/gank', component: Gank, name: 'Gank' },
             // { path: '/daily', component: Daily, name: 'Daily'},
             // { path: '/github', component: Github, name: 'Github'},
-            // { path: '/hackernews', component: HackerNews, name: 'HackerNews'},
+            { path: '/hackernews', component: Hackernews, name: 'Hackernews'},
             // { path: '/about', component: About, name: 'About'}
         ]
     },

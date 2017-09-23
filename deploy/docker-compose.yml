@@ -1,11 +1,14 @@
-vue:
-  image: suidu:vue
-  container_name: vue
-  volumes:
-    - ../src/web/vue:/vue:ro
-  volumes_from:
-    - django
-  command: npm run build
+#vue:
+#  image: suidu:vue
+#  container_name: vue
+#  volumes:
+#    - ../src/web/vue/build:/vue/build:ro
+#    - ../src/web/vue/config:/vue/config:ro
+#    - ../src/web/vue/src:/vue/src:ro
+#    - ../src/web/vue/build:/vue/build:ro
+#  volumes_from:
+#    - django
+#  command: npm run build
 
 
 mongodb:
@@ -20,8 +23,8 @@ scrapyd:
     - ./scrapyd:/scrapyd
   links:
     - mongodb
-  expose:
-    - "6800"
+  ports:
+    - "6800:6800"
   command: scrapyd
 
 
@@ -38,13 +41,13 @@ django:
   command: gunicorn -c gunicorn_conf.py suidu.wsgi:application
 
 
-scrapy:
-  image: suidu:scrapy
-  container_name: scrapy
-  links:
-    - mongodb
-    - scrapyd
-  command: /bin/bash
+#scrapy:
+#  image: suidu:scrapy
+#  container_name: scrapy
+#  links:
+#    - mongodb
+#    - scrapyd
+#  command: /bin/bash
 
 
 nginx:
