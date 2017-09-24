@@ -5,8 +5,8 @@
   "author": "NeverMoes <nevermoes@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "dev": "node code/build/dev-server.js",
+    "build": "node code/build/build.js"
   },
   "dependencies": {
     "axios": "^0.15.3",
