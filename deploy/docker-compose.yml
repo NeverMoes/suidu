@@ -1,14 +1,11 @@
-#vue:
-#  image: suidu:vue
-#  container_name: vue
-#  volumes:
-#    - ../src/web/vue/build:/vue/build:ro
-#    - ../src/web/vue/config:/vue/config:ro
-#    - ../src/web/vue/src:/vue/src:ro
-#    - ../src/web/vue/build:/vue/build:ro
-#  volumes_from:
-#    - django
-#  command: npm run build
+vue:
+  image: suidu:vue
+  container_name: vue
+  volumes:
+    - ../src/web/vue/code:/vue/code:ro
+  volumes_from:
+    - django
+  command: npm run build
 
 
 mongodb:
