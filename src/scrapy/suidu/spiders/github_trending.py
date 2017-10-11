@@ -1,6 +1,6 @@
 import scrapy
 from ..items import GithubTrendingItem
-
+from bs4 import BeautifulSoup
 
 class GithubTrendingSpider(scrapy.Spider):
     name = 'github_trending'
@@ -14,16 +14,19 @@ class GithubTrendingSpider(scrapy.Spider):
 
     def parse_trending(self, response):
         item = GithubTrendingItem()
-        for sel in response.css('div.explore-content > ol > li'):
-            divs = sel.css('div')
-            url = divs[0].css('h3 > a::attr(href)').extract_first()
-            _, item['owner'], item['repo'] = url.split('/')
-            item['url'] = self.url_prefix + url
-            desc = divs[2].css('p::text').extract_first()
-            item['desc'] = desc.strip() if desc else None
-            item['stars'] = divs[3].css('a[aria-label="Stargazers"]::text').extract()[1].strip()
-            item['forks'] = divs[3].css('a[aria-label="Forks"]::text').extract()[1].strip()
-            item['today_stars'] = divs[3].css('span.float-right::text').extract()[1].strip()
-            type = divs[3].css('span[itemprop="programmingLanguage"]::text').extract_first()
-            item['type'] = type.strip() if type else None
+        response_test = response.text
+        result = BeautifulSoup(response_test,'lxml')
+        for sel in result.select('div.explore-content > ol > li'):
+            href = sel.find("a")['href']
+            item['url'] = self.url_prefix+"/"+href
+            item['desc'] = sel.find("p").text
+            item['owner'] = href.split("/")[1]
+            item['repo'] = href.split("/")[2]
+            try:
+                item['type'] = sel.select('span[itemprop="programmingLanguage"]')[0].text
+            except:
+                item['type'] = None
+            item['stars'] = sel.select('svg[aria-label="star"]')[0].parent.text.strip()
+            item['forks'] = sel.select('svg[aria-label="fork"]')[0].parent.text.strip()
+            item['today_stars'] = sel.select('svg[aria-hidden="true"]')[1].parent.text.strip()
             yield item
