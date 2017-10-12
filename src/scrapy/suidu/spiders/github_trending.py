@@ -1,6 +1,6 @@
 import scrapy
 from ..items import GithubTrendingItem
-from bs4 import BeautifulSoup
+
 
 class GithubTrendingSpider(scrapy.Spider):
     name = 'github_trending'
@@ -14,19 +14,16 @@ class GithubTrendingSpider(scrapy.Spider):
 
     def parse_trending(self, response):
         item = GithubTrendingItem()
-        response_test = response.text
-        result = BeautifulSoup(response_test,'lxml')
-        for sel in result.select('div.explore-content > ol > li'):
-            href = sel.find("a")['href']
-            item['url'] = self.url_prefix+"/"+href
-            item['desc'] = sel.find("p").text
-            item['owner'] = href.split("/")[1]
-            item['repo'] = href.split("/")[2]
-            try:
-                item['type'] = sel.select('span[itemprop="programmingLanguage"]')[0].text
-            except:
-                item['type'] = None
-            item['stars'] = sel.select('svg[aria-label="star"]')[0].parent.text.strip()
-            item['forks'] = sel.select('svg[aria-label="fork"]')[0].parent.text.strip()
-            item['today_stars'] = sel.select('svg[aria-hidden="true"]')[1].parent.text.strip()
+        for sel in response.css('div.explore-content > ol > li'):
+            divs = sel.css('div')
+            url = divs[0].css('h3 > a::attr(href)').extract_first()
+            _ ,item['owner'] ,item['repo'] = url.split('/')
+            item['url'] = self.url_prefix + url
+            desc = divs[2].css('p::text').extract_first()
+            item['desc'] = desc.strip() if desc else None
+            item['stars'] = divs[3].css('a[class="muted-link d-inline-block mr-3"]::text').extract()[1].strip()
+            item['forks'] = divs[3].css('a[class="muted-link d-inline-block mr-3"]::text').extract()[3].strip()
+            item['today_stars'] = divs[3].css('span[class="d-inline-block float-sm-right"]::text').extract()[1].strip()
+            type = divs[3].css('span[itemprop="programmingLanguage"]::text').extract_first()
+            item['type'] = type.strip() if type else None
             yield item
