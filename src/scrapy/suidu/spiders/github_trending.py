@@ -17,7 +17,7 @@ class GithubTrendingSpider(scrapy.Spider):
         for sel in response.css('div.explore-content > ol > li'):
             divs = sel.css('div')
             url = divs[0].css('h3 > a::attr(href)').extract_first()
-            _ ,item['owner'] ,item['repo'] = url.split('/')
+            _, item['owner'], item['repo'] = url.split('/')
             item['url'] = self.url_prefix + url
             desc = divs[2].css('p::text').extract_first()
             item['desc'] = desc.strip() if desc else None
