@@ -1,14 +1,3 @@
-# 技术栈说明
-
-
-![](https://github.com/NeverMoes/suidu/blob/master/docs/suidu.png)
-
-## 前端
-vue + vuex + vue-router + axios + elementUI
-## 后端
-django + RESTful API + mongodb
-## 爬虫
-scrapy + mongodb
-## 运维
-docker + nginx + uwsgi
-## docker 镜像地址
+# 碎读
+新一代的RSS阅读器
+目前开发中
