@@ -21,9 +21,9 @@ class GithubTrendingSpider(scrapy.Spider):
             item['url'] = self.url_prefix + url
             desc = divs[2].css('p::text').extract_first()
             item['desc'] = desc.strip() if desc else None
-            item['stars'] = divs[3].css('a[aria-label="Stargazers"]::text').extract()[1].strip()
-            item['forks'] = divs[3].css('a[aria-label="Forks"]::text').extract()[1].strip()
-            item['today_stars'] = divs[3].css('span.float-right::text').extract()[1].strip()
+            item['stars'] = divs[3].css('a[class="muted-link d-inline-block mr-3"]::text').extract()[1].strip()
+            item['forks'] = divs[3].css('a[class="muted-link d-inline-block mr-3"]::text').extract()[3].strip()
+            item['today_stars'] = divs[3].css('span[class="d-inline-block float-sm-right"]::text').extract()[1].strip()
             type = divs[3].css('span[itemprop="programmingLanguage"]::text').extract_first()
             item['type'] = type.strip() if type else None
             yield item
