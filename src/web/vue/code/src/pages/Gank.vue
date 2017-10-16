@@ -43,7 +43,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   .el-table .info-row {}
-
   .el-table .info-row:hover{
     cursor: pointer;
   }
