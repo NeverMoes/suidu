@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="tableData" highlight-current-row border style="width: 100%" @row-click="handRowClick">
+    <el-table :data="tableData" highlight-current-row border style="width: 100%" @row-click="handRowClick" :row-class-name="tableRowClassName">
         <el-table-column prop="desc" label="标题"></el-table-column>
         <el-table-column prop="publishedAt" label="时间"></el-table-column>
         <el-table-column prop="type" label="类型"></el-table-column>
@@ -24,6 +24,12 @@ export default {
   methods: {
     handRowClick(row, event, column) {
         window.open(row.url)
+    },
+    tableRowClassName(row, index) {
+        if (index >= 0) {
+          return 'info-row';
+        }
+        return '';
     }
   },
   mounted: function() {
@@ -35,6 +41,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+  .el-table .info-row {}
+  .el-table .info-row:hover{
+    cursor: pointer;
+  }
 </style>
